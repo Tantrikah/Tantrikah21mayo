@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tantrikah Boutique - Pedidos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Fuentes personalizadas (Inter es una buena opción por defecto) */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Estilos personalizados para el botón de WhatsApp */
+        .whatsapp-button {
+            background-color: #25D366; /* Color de WhatsApp */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+        .whatsapp-button:hover {
+            background-color: #1DA851;
+        }
+        /* Estilo para el mensaje de éxito */
+        .success-message {
+            display: none; /* Oculto por defecto */
+            background-color: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-100 to-pink-100 min-h-screen flex flex-col items-center py-8 px-4">
+
+    <header class="w-full max-w-4xl bg-white p-6 rounded-xl shadow-lg mb-8 text-center">
+        <div class="mb-4">
+            <img src="WhatsApp Image 2025-05-21 at 19.59.58.jpeg" alt="Logo de Tantrikah Boutique" class="mx-auto w-auto h-24 object-contain rounded-lg shadow-md">
+        </div>
+        <h1 class="text-5xl font-extrabold text-red-700 mb-4 tracking-tight">Tantrikah Boutique</h1>
+        <p class="text-2xl font-semibold text-amber-500 italic">"Expresa tu esencia"</p>
+    </header>
+
+    <main class="w-full max-w-4xl bg-white p-8 rounded-xl shadow-lg grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+
+        <section class="info-section p-4 border-r md:border-r-2 border-purple-200 pr-8">
+            <h2 class="text-3xl font-bold text-orange-600 mb-4 flex items-center gap-2">
+                <i class="fas fa-tshirt text-orange-500"></i> Características de Nuestras Prendas
+            </h2>
+            <p class="text-gray-700 leading-relaxed mb-4">
+                En Tantrikah Boutique, nos enorgullece ofrecer prendas que combinan estilo, calidad y confort. Cada pieza es cuidadosamente seleccionada y diseñada pensando en la mujer moderna.
+            </p>
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+                <li class="flex items-start gap-2">
+                    <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                    <span class="font-semibold text-indigo-600">Materiales Premium:</span> Utilizamos telas suaves al tacto, transpirables y duraderas, como algodón orgánico, lino y mezclas de seda.
+                </li>
+                <li class="flex items-start gap-2">
+                    <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                    <span class="font-semibold text-indigo-600">Diseños Exclusivos:</span> Nuestras colecciones presentan diseños únicos que reflejan las últimas tendencias, perfectos para cualquier ocasión.
+                </li>
+                <li class="flex items-start gap-2">
+                    <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                    <span class="font-semibold text-indigo-600">Confort Inigualable:</span> Priorizamos la comodidad sin sacrificar el estilo, asegurando que te sientas fabulosa durante todo el día.
+                </li>
+                <li class="flex items-start gap-2">
+                    <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                    <span class="font-semibold text-indigo-600">Variedad de Estilos:</span> Desde vestidos elegantes hasta conjuntos casuales, tenemos algo para cada gusto y personalidad.
+                </li>
+            </ul>
+        </section>
+
+        <section class="form-section p-4 pl-8">
+            <h2 class="text-3xl font-bold text-orange-600 mb-4 flex items-center gap-2">
+                <i class="fas fa-shopping-cart text-orange-500"></i> Realiza tu Pedido
+            </h2>
+            <form id="orderForm" class="space-y-4">
+                <div>
+                    <label for="fullName" class="block text-gray-700 text-sm font-bold mb-2">Nombre Completo:</label>
+                    <input type="text" id="fullName" name="fullName" required class="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-500">
+                </div>
+
+                <div>
+                    <label for="garmentType" class="block text-gray-700 text-sm font-bold mb-2">Tipo de Prenda de Interés:</label>
+                    <select id="garmentType" name="garmentType" required class="shadow border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-500">
+                        <option value="">Selecciona un tipo</option>
+                        <option value="vestido">Vestido</option>
+                        <option value="blusa">Blusa</option>
+                        <option value="falda">Falda</option>
+                        <option value="pantalon">Pantalón</option>
+                        <option value="conjunto">Conjunto</option>
+                        <option value="accesorio">Accesorio</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="garmentColor" class="block text-gray-700 text-sm font-bold mb-2">Color de la Prenda:</label>
+                    <input type="text" id="garmentColor" name="garmentColor" class="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-500">
+                </div>
+
+                <div>
+                    <label for="city" class="block text-gray-700 text-sm font-bold mb-2">Ciudad:</label>
+                    <input type="text" id="city" name="city" required class="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-500">
+                </div>
+
+                <div>
+                    <label for="coloniaAlcaldia" class="block text-gray-700 text-sm font-bold mb-2">Colonia y Alcaldía de Entrega:</label>
+                    <input type="text" id="coloniaAlcaldia" name="coloniaAlcaldia" required class="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-500">
+                </div>
+
+                <div>
+                    <label for="state" class="block text-gray-700 text-sm font-bold mb-2">Estado:</label>
+                    <select id="state" name="state" required class="shadow border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-500">
+                        <option value="">Selecciona un estado</option>
+                        <option value="Aguascalientes">Aguascalientes</option>
+                        <option value="Baja California">Baja California</option>
+                        <option value="Baja California Sur">Baja California Sur</option>
+                        <option value="Campeche">Campeche</option>
+                        <option value="Chiapas">Chiapas</option>
+                        <option value="Chihuahua">Chihuahua</option>
+                        <option value="Coahuila">Coahuila</option>
+                        <option value="Colima">Colima</option>
+                        <option value="Ciudad de México">Ciudad de México</option>
+                        <option value="Durango">Durango</option>
+                        <option value="Guanajuato">Guanajuato</option>
+                        <option value="Guerrero">Guerrero</option>
+                        <option value="Hidalgo">Hidalgo</option>
+                        <option value="Jalisco">Jalisco</option>
+                        <option value="México">México</option>
+                        <option value="Michoacán">Michoacán</option>
+                        <option value="Morelos">Morelos</option>
+                        <option value="Nayarit">Nayarit</option>
+                        <option value="Nuevo León">Nuevo León</option>
+                        <option value="Oaxaca">Oaxaca</option>
+                        <option value="Puebla">Puebla</option>
+                        <option value="Querétaro">Querétaro</option>
+                        <option value="Quintana Roo">Quintana Roo</option>
+                        <option value="San Luis Potosí">San Luis Potosí</option>
+                        <option value="Sinaloa">Sinaloa</option>
+                        <option value="Sonora">Sonora</option>
+                        <option value="Tabasco">Tabasco</option>
+                        <option value="Tamaulipas">Tamaulipas</option>
+                        <option value="Tlaxcala">Tlaxcala</option>
+                        <option value="Veracruz">Veracruz</option>
+                        <option value="Yucatán">Yucatán</option>
+                        <option value="Zacatecas">Zacatecas</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="phone" class="block text-gray-700 text-sm font-bold mb-2">Teléfono (10 dígitos):</label>
+                    <input type="number" id="phone" name="phone" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required class="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-500">
+                </div>
+
+                <div>
+                    <label for="email" class="block text-gray-700 text-sm font-bold mb-2">E-mail:</label>
+                    <input type="email" id="email" name="email" required class="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-500">
+                </div>
+
+                <div>
+                    <label for="comments" class="block text-gray-700 text-sm font-bold mb-2">Comentarios:</label>
+                    <textarea id="comments" name="comments" rows="4" class="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-500"></textarea>
+                </div>
+
+                <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg focus:outline-none focus:shadow-outline transition duration-300 ease-in-out transform hover:scale-105 w-full">
+                    <i class="fas fa-paper-plane mr-2"></i> Generar Pedido
+                </button>
+
+                <div id="successMessage" class="success-message">
+                    SE ha recibido el pedido. ¡Gracias por tu compra!
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="w-full max-w-4xl bg-white p-6 rounded-xl shadow-lg flex flex-col sm:flex-row justify-center items-center gap-6">
+        <a href="https://www.facebook.com/TantrikahBoutique" target="_blank" class="text-blue-600 hover:text-blue-800 transition duration-300 ease-in-out transform hover:scale-110">
+            <i class="fab fa-facebook-square text-5xl"></i>
+        </a>
+        <a href="https://wa.me/5215512345678" target="_blank" class="whatsapp-button transform hover:scale-105">
+            <i class="fab fa-whatsapp text-2xl"></i>
+            Enviar WhatsApp
+        </a>
+    </footer>
+
+    <script>
+        document.getElementById('orderForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita que el formulario se envíe de la forma tradicional
+
+            // Aquí podrías recopilar los datos del formulario si quisieras enviarlos a un servidor
+            const formData = {
+                fullName: document.getElementById('fullName').value,
+                garmentType: document.getElementById('garmentType').value,
+                garmentColor: document.getElementById('garmentColor').value,
+                city: document.getElementById('city').value,
+                coloniaAlcaldia: document.getElementById('coloniaAlcaldia').value,
+                state: document.getElementById('state').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                comments: document.getElementById('comments').value
+            };
+
+            console.log('Pedido recibido:', formData); // Para depuración, puedes ver los datos en la consola
+
+            // Mostrar mensaje de éxito
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block'; // Hacer visible el mensaje
+
+            // Limpiar el formulario automáticamente
+            this.reset(); // Resetea todos los campos del formulario a sus valores iniciales
+
+            // Ocultar el mensaje de éxito después de unos segundos
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000); // Ocultar después de 5 segundos
+        });
+
+        // Asegurarse de que el campo de teléfono no permita más de 10 dígitos
+        document.getElementById('phone').addEventListener('input', function(e) {
+            if (this.value.length > this.maxLength) {
+                this.value = this.value.slice(0, this.maxLength);
+            }
+        });
+    </script>
+</body>
+</html>
